@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html Xmlns: th="http://www.thymeleaf.org">
+    <head>
+        <title>Control de Cliente</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Modificar Reserva</a>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/nuevaReserva">Modificar Reserva</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <br>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                    <h1 class="text-center">Registro de Reservas</h1>
+                    <div class="card-body">
+                        <form th:action="@{/guardarTour}" th:object="${tours}" method="post">
+
+                            <div class="form-group">
+                                <label>Cod Tour</label>
+                                <input type="text" name="id_tour" th:field="*{id_tour}" class="form-control" readonly="readonly">
+                                <label>Nombre Tour :</label>
+                                <input type="text" name="nombre_tour" th:field="*{nombre_tour}" class="form-control" required>
+                                <label>Numero de Habitacion :</label>
+                                <input type="text" name="id_habitacion" th:field="*{id_habitacion}" class="form-control">
+                                <label>Descripcion :</label>
+                                <input type="text" name="descripcion" th:field="*{descripcion}" class="form-control">
+                                <label>Costo :</label>
+                                <input type="text" name="costo" th:field="*{costo}" class="form-control">
+                                <br>
+                                <div class="box-footer">
+                                    <button class="btn btn-success">Guardar</button>
+                                </div>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

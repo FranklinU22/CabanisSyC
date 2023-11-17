@@ -1,0 +1,34 @@
+
+package com.cabanasSyC.Service;
+
+
+import com.cabanasSyC.Entidad.Cliente;
+import com.cabanasSyC.Repository.ClienteRepositorio;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ClienteServicio {
+    
+    @Autowired
+    private ClienteRepositorio repo;
+    
+    public List<Cliente> listAll(){
+
+    return repo.findAll();
+    }
+    
+    public void save(Cliente cliente){
+    repo.save(cliente);
+    }
+    
+    public Cliente get(Integer id){
+    return repo.findById(id).get();
+    }
+    
+    public void delete(Integer id){
+    repo.deleteById(id);
+    }
+    
+}
