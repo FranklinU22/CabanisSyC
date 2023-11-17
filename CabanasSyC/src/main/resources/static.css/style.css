@@ -1,0 +1,125 @@
+.roboto{
+    font-family: 'Roboto', sans-serif;
+}
+
+.acme{
+    font-family: 'Acme', sans-serif;
+}
+
+@media screen and (max-width: 767px){
+    .navbar-brand{
+        display: none;
+    }
+}
+
+.bg-image{  
+    height: 100vh;
+}
+
+.logo-size{
+    width: 200px;
+}
+
+.letra-nav{
+    font-size: 25px;
+}
+
+.letra-logo{
+    font-size: 35px;
+}
+
+.color-titulo{
+    color: #8C512F;
+}
+
+.letra-hover{
+    color: white;
+}
+
+.letra-hover:hover{
+    color: #8C512F;
+    text-shadow: 0 0 80px #ffff;
+}
+
+.borderW {
+    color: #8C512F;
+    text-shadow:
+        -1px -1px 0 White,
+        1px -1px 0 White,
+        1px 1px 0 White,
+        -1px 1px 0 White
+}
+
+.wave{
+    color: #1c751c;
+    animation: wave 3s ease-in-out infinite;
+}
+
+.titulos{
+    font-size: 50px;
+}
+
+.titulos a{
+    text-decoration: none;
+}
+
+.padding-user{
+    padding-right: 100px;
+}
+
+@keyframes wave{
+    0%, 100%{
+        clip-path: polygon(
+            0% 47%,
+            10% 48%,
+            33% 54%,
+            54% 60%,
+            70% 61%,
+            84% 59%,
+            100% 52%,
+            100% 100%,
+            0% 100%
+        );
+    }
+    
+    50%{
+        clip-path: polygon(
+            0% 60%,
+            15% 65%,
+            34% 66%,
+            51% 62%,
+            67% 50%,
+            84% 45%,
+            100% 46%,
+            100% 100%,
+            0% 100%
+        );
+    }
+}
+
+.dropdown-menu{
+    background-color: #8C512F;
+    color: white;
+}
+
+.dropdown-item:hover{
+    color:black;
+    background-color:#8C512F;
+    text-shadow: 0 0 20px white;
+}
+
+.shadow-white{
+    text-shadow: 0 0 10px white;
+}
+
+.shadow-green{
+    text-shadow: 3px 3px 3px green;
+}
+
+.btn-h{
+    color: white;
+}
+
+.margin-c{
+    margin-top: 5%;
+}
