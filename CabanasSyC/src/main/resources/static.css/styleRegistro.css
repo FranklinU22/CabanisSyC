@@ -1,0 +1,47 @@
+.bg{
+    background-image: url(../img/Foto\ registro.jpg);
+    background-position: center center;
+}
+
+.marginTip{
+    margin-top: 7%;
+}
+
+body{
+    background-color: #592817;
+}
+
+.titulo-r{
+    color: #592817;
+    text-shadow: 0 0 5px black;
+    font-family: 'Roboto', sans-serif;
+    font: bold;
+}
+
+.conf-texto-label{
+    color: black;
+    text-shadow: 0 0 10px black;
+    font-family: 'Roboto', sans-serif;
+    font: bold;
+}
+
+.form-control-hover{
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font: bold;
+}
+
+.form-control-hover:hover{
+    background-color:#592817;
+    opacity: 0.9;
+    color: white;
+    box-shadow: 0 0 10px black;
+}
+
+.btn-r{
+    background-color: #592817;
+}
+
+.btn-r:hover{
+    color: black;
+}
