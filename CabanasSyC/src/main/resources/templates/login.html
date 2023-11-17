@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <title>Cabañas SyC</title>
+        <meta charset="UTF-8"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../css/style.css" type="text/css">
+        <link rel="stylesheet" href="../css/styleRegistro.css" type="text/css">
+        <link rel="stylesheet" href="../css/styleLogin.css" type="text/css">
+        <script th:src="@{/js/rutinas.js}"></script>    
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Acme&family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg fixed-top">
+                <div class="container-fluid d-flex align-items-center">
+                    <a class="navbar-brand letra-logo ms-2" th:href="@{/}">
+                        <img src="../img/Logoxfondo.png" class="logo-size" alt="Logo"/>
+                    </a>
+                    <li class="nav-item titulos d-flex align-items-center justify-contents-center m-0 p-0">
+                        <a class="borderW position-absolute color-titulo acme m-0 p-0">[[#{nav.logo}]]</a>
+                        <a class="wave position-absolute color-titulo acme m-0 p-0">[[#{nav.logo}]]</a>
+                    </li>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon text-white"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto acme">
+                            
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" aria-current="page" th:href="@{/}">[[#{nav.inicio}]]</a>
+                            </li>
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" href="#">[[#{nav.cabanas}]]</a>
+                            </li>
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" href="#">[[#{nav.toures}]]</a>
+                            </li>
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" href="#">[[#{nav.contacto}]]</a>
+                            </li>
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" href="#">[[#{nav.reservar}]]</a>
+                            </li>
+                            <li class="nav-item dropdown letra-nav ms-3 mt-2 padding-user">
+                                <i class="bi bi-person-circle letra-hover nav-link dropdown-toggle" data-bs-toggle="dropdown"  role="button" aria-expanded="false"></i>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" th:href="@{/login/login}">[[#{iniciar.iniciar}]]</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" th:href="@{/registro/registro}">[[#{iniciar.registrarse}]]</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section>
+            <div class="container w-75 marginTip-login rounded shadow">
+                <div class="row align-items-stretch">
+                    <div class="col bg-login rounded-start col-md-5 col-lg-5 col-xl-6">
+                    </div>
+                    <div class="col rounded-end p-5">
+                        <form class="row g-3 validated">
+                            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start text-white">
+                                <p class="lead fw-normal mb-0 me-3">Iniciar sesion con</p>
+                                <button type="button" class="btn btn-success btn-floating mx-1">
+                                    <i class="fab fa-instagram"></i>
+                                </button>
+        
+                                <button type="button" class="btn btn-success btn-floating mx-1">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+        
+                                <button type="button" class="btn btn-success btn-floating mx-1">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </button>
+                            </div>
+        
+                            <div class="divider d-flex align-items-center justify-content-center my-4 text-white">
+                                <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                            </div>
+        
+                            <!-- Email input -->
+                            <div class="form-outline mb-4 text-white">
+                                <input type="email" id="form3Example3" class="form-control form-control-hover-login form-control-lg"
+                                    placeholder="Enter a valid email address" />
+                                <label class="form-label" for="form3Example3">Email address</label>
+                            </div>
+        
+                            <!-- Password input -->
+                            <div class="form-outline mb-3 text-white">
+                                <input type="password" id="form3Example4" class="form-control form-control-hover-login form-control-lg"
+                                    placeholder="Enter password" />
+                                <label class="form-label" for="form3Example4">Password</label>
+                            </div>
+        
+                            <div class="d-flex justify-content-between align-items-center text-white">
+                                <!-- Checkbox -->
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                    <label class="form-check-label" for="form2Example3">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <a href="#!" class="text-white">Forgot password?</a>
+                            </div>
+        
+                            <div class="text-center text-lg-start mt-4 pt-2 text-white">
+                                <button type="button" class="btn btn-success btn-lg"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
+                                        class="text-white">Register</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
