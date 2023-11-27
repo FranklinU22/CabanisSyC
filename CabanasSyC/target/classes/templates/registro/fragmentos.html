@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title></title>
+    </head>
+    <body>
+        <section th:fragment="formulario">
+          <div class="container w-75 marginTip rounded shadow">
+            <div class="row align-items-stretch">
+              <div class="col bg rounded-start col-md-5 col-lg-5 col-xl-6">  
+              </div>
+              <div class="col bg-white rounded-end p-5">
+                <div class="text-end altura-registro">
+                  <img src="../img/Logoxfondo.png" width="100" alt=""/>
+                </div>
+                <h2 class="fw-bold mb-4 text-center titulo-r">[[#{registrar.cuenta}]]</h2>
+                <form method="POST" th:action="@{/guardar}" th:object="${usuario}" class="row g-3 validated" enctype="multipart/form-data">
+                  <div class="mb-1 col-md-6">
+                    <label for="nombre" class="form-label conf-texto-label">[[#{registrar.nombre}]]</label>
+                    <input type="text" class="form-control" id="nombre"/>
+                  </div>
+                  <div class="mb-1 col-md-6">
+                    <label for="apellidos" class="form-label conf-texto-label">[[#{registrar.apellidos}]]</label>
+                    <input type="text" class="form-control" id="apellidos"/>
+                  </div>
+                  <div class="mb-1 col-md-6">
+                    <label for="usuario" class="form-label conf-texto-label">[[#{registrar.usuario}]]</label>
+                    <input type="text" class="form-control" id="usuario"/>
+                  </div>
+                  <div class="mb-1 col-md-6">
+                    <label for="telefono" class="form-label conf-texto-label">[[#{registrar.telefono}]]</label>
+                    <input type="text" class="form-control" id="telefono"/>
+                  </div>
+                  <div class="mb-1 col-md-6">
+                    <label for="email" class="form-label conf-texto-label">[[#{registrar.email}]]</label>
+                    <input type="text" class="form-control" id="email"/>
+                  </div>
+                  <div class="mb-1 col-md-6">
+                    <label for="nacionalidad" class="form-label conf-texto-label">[[#{registrar.addres}]]</label>
+                    <input type="text" class="form-control" id="nacionalidad"/>
+                  </div>
+                  <div class="mb-4 col-md-6">
+                    <label for="password" class="form-label conf-texto-label">[[#{registrar.contrasena}]]</label>
+                    <input type="password" class="form-control" id="password"/>
+                  </div>
+                  <div class="mb-1 col-12 conf-texto-label">
+                    <div class="form-check conf-texto-label">
+                      <input class="form-check-input conf-texto-label" type="checkbox" id="gridCheck"/>
+                      <label class="form-check-label conf-texto-label" for="gridCheck">[[#{registrar.activo}]]</label>
+                    </div>
+                  </div>
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-r text-white conf-texto-label">[[#{registrar.registrarse}]]</button>
+                  </div>
+                  <div class="my-2 conf-texto-label">
+                    <span>[[#{registrar.siCuenta}]]<a href="#">    [[#{iniciar.iniciar}]]</a></span>
+                    <span><a href="#">[[#{registar.recContra}]]</a></span>
+                  </div>
+                </form>
+                <script type="text/javascript">
+                  $(function(){
+                    $('#datepicker').datepicker();
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+        </section>
+    </body>
+</html>

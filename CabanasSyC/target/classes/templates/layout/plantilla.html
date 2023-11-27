@@ -1,0 +1,420 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:fragment="head">
+        <title>Cabañas SyC</title>
+        <meta charset="UTF-8"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+            <link rel="stylesheet" href="../css/style.css" type="text/css">
+        <link rel="stylesheet" href="../css/styleRegistro.css" type="text/css">
+        <link rel="stylesheet" href="../css/styleLogin.css" type="text/css">    
+        <script th:src="@{/js/rutinas.js}"></script>    
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Acme&family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header th:fragment="header">
+            <nav class="navbar navbar-expand-lg fixed-top">
+                <div class="container-fluid d-flex align-items-center">
+                    <a class="navbar-brand letra-logo ms-2" th:href="@{/}">
+                        <img src="../img/Logoxfondo.png" class="logo-size" alt="Logo"/>
+                    </a>
+                    <li class="nav-item titulos d-flex align-items-center justify-contents-center m-0 p-0">
+                        <a th:href="@{/}" class="borderW position-absolute color-titulo acme m-0 p-0">[[#{nav.logo}]]</a>
+                        <a th:href="@{/}" class="wave position-absolute color-titulo acme m-0 p-0">[[#{nav.logo}]]</a>
+                    </li>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon text-white"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto acme">
+                            
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" aria-current="page" th:href="@{/}">[[#{nav.inicio}]]</a>
+                            </li>
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" href="#">[[#{nav.cabanas}]]</a>
+                            </li>
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" href="#">[[#{nav.toures}]]</a>
+                            </li>
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" href="#">[[#{nav.contacto}]]</a>
+                            </li>
+                            <li class="nav-item letra-nav mx-3">
+                                <a class="nav-link letra-hover" href="#">[[#{nav.reservar}]]</a>
+                            </li>
+                            <li class="nav-item dropdown letra-nav ms-3 mt-2 padding-user">
+                                <i class="bi bi-person-circle letra-hover nav-link dropdown-toggle" data-bs-toggle="dropdown"  role="button" aria-expanded="false"></i>
+                                <ul class="dropdown-menu">
+                                    <button class="btn" sec:authorize='!isAuthenticated()'>
+                                        <li sec:authorize='!isAuthenticated()'><a class="dropdown-item" th:href="@{/login}" sec:authorize='!isAuthenticated()'>[[#{iniciar.iniciar}]]</a></li>
+                                    </button>
+                                    <li sec:authorize='!isAuthenticated()'><hr class="dropdown-divider" sec:authorize='!isAuthenticated()'></li>
+                                    <button class="btn" sec:authorize='!isAuthenticated()'>
+                                        <li sec:authorize='!isAuthenticated()'><a class="dropdown-item" th:href="@{/registro}" sec:authorize='!isAuthenticated()'>[[#{iniciar.registrarse}]]</a></li>
+                                    </button>
+                                    <button class="btn" sec:authorize='isAuthenticated()'>
+                                        <li><a class="dropdown-item" th:href="@{/}" sec:authorize='isAuthenticated()'>Ver perfil</a></li>
+                                    </button>
+                                    <li sec:authorize='isAuthenticated()'><hr class="dropdown-divider sec:authorize='isAuthenticated()'"></li>
+                                    <form method='post' th:action="@{/logout}">
+                                        <button class="btn" sec:authorize='isAuthenticated()'>
+                                            <li sec:authorize='isAuthenticated()'><a class="dropdown-item" th:action="@{/logout}" sec:authorize='isAuthenticated()'>logout</a></li>
+                                        </button>
+                                    </form>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section th:fragment="hero">
+            <div id="carouselExampleSlidesOnly" class="carousel slide bg-image" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../img/Cabañas noche edit.png" class="d-block w-100 altura-imagen1" alt="">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/Piscina atardecer.jpeg" class="d-block w-100 altura-imagen2" alt="">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/Rancho y volcan.jpeg" class="d-block w-100 altura-imagen2" alt="">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/Piscina noche.jpeg" class="d-block w-100 altura-imagen2" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="descripcion">
+            <div class="container text-center mt-5">
+                <h1 class=" text-white shadow-white acme">Sobre nosotros</h1>
+                <p class="text-white mt-4">Cabañas SyC es un encantador establecimiento que se distingue por su entorno natural y acogedor. El hotel ofrece a sus huéspedes una experiencia única y relajante. Consta de seis hermosas cabañas construidas en madera, cada una diseñada para brindar comodidad y privacidad.
+                    Las cabañas, reflejan la armonía entre la naturaleza y la comodidad. Cada una está equipada con instalaciones y comodidades para garantizar una estancia placentera. Desde el mobiliario hasta los detalles decorativos, se ha cuidado cada aspecto para crear un ambiente acogedor y hogareño.
+                    Los huéspedes de Cabañas SyC tienen la oportunidad de disfrutar de una refrescante piscina, ideal para relajarse y disfrutar del clima. El entorno de la piscina está diseñado para proporcionar un ambiente tranquilo y agradable, perfecto para momentos de descanso y recreación.
+                    Además, el hotel cuenta con un rancho donde los huéspedes pueden disfrutar de preparar deliciosas comidas al aire libre o simplemente relajarse con una bebida mientras disfrutan del paisaje. 
+                    La seguridad y privacidad de los huéspedes son prioridades en Cabañas SyC. El parqueo privado y seguro brinda tranquilidad a aquellos que viajan en vehículo propio, asegurando que su estancia sea aún más cómoda y sin preocupaciones.
+                </p>
+            </div>
+        </section>
+
+        </section>
+        <section th:fragment="cabanas">
+            <h2 class=" text-white shadow-white acme text-center justify-contents-center align-items-center mt-5">Instalaciones</h2>
+            <div class="container margin-c">
+                <div class="row align-items-stretch d-flex flex-row justifty-contents-center">
+                    <div class="col-md-6">
+                        <div id="carouselExampleCaptions" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                                    aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="../img/Cabañas noche.jpeg" class="d-block w-100 rounded" alt="">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Rusticas</h5>
+                                        <p>Nuestra decoración todo de madera te adentra en la naturaleza</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/Cabañas amanecer.jpg" class="d-block w-100 rounded" alt="">
+                                    <div class="carousel-caption d-none d-md-block rounded">
+                                        <h5>Second slide label</h5>
+                                        <p>Some representative placeholder content for the second slide.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/cabañas nochesita.jpg" class="d-block w-100 rounded" alt="">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Third slide label</h5>
+                                        <p>Some representative placeholder content for the third slide.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="text-white roboto shadow-white">Cabañas</h5>
+                        <p class="text-white roboto text-start">Cabañas SyC presenta seis hermosas cabañas de madera, cada una diseñada para ofrecer a los huéspedes una experiencia única de escape y relajación. Cuatro de estas acogedoras cabañas han sido pensadas para grupos de hasta 3 personas, brindando privacidad y confort en medio de la naturaleza. Adicionalmente, dos cabañas más espaciosas están disponibles para grupos de hasta 4 personas, permitiendo una estancia cómoda y relajante.
+
+La esencia de Cabañas SyC va más allá de la arquitectura y se sumerge en la experiencia completa del huésped. Cada cabaña está completamente equipada con amenidades, asegurando que tu estancia sea inolvidable. Disfruta de momentos de entretenimiento con la televisión, regula la temperatura a tu gusto con el aire acondicionado, almacena tus alimentos y bebidas en la nevera, prepara tus comidas con la plantilla eléctrica y saborea tu café preferido con el coffeemaker.
+
+En Cabañas SyC, la hospitalidad se fusiona con la naturaleza para ofrecer a nuestros huéspedes una experiencia única en La Fortuna de San Carlos. Ven y descubre un rincón de paz y comodidad, donde la magia de la ubicación se combina con el confort de nuestras cabañas. ¡Te invitamos a explorar la armonía entre la naturaleza y la tranquilidad en Cabañas SyC!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="piscina">
+            <div class="container mt-5">
+                <div class="row align-items-stretch d-flex flex-row justifty-contents-center">
+                    <div class="col-md-6">
+                        <h5 class="text-white roboto shadow-white">Piscina</h5>
+                        <p class="text-white roboto">El área de la piscina se distingue por su versatilidad, destinando secciones específicas para niños y adultos, garantizando así la seguridad y la diversión para todas las edades. Los más pequeños pueden disfrutar de su propia área, mientras que los adultos pueden sumergirse en la serenidad del agua y disfrutar de momentos de únicos.
+
+Lo que hace que la piscina en Cabañas SyC sea verdaderamente especial es su forma única y bella. Diseñada con curvas que resaltan la estética del entorno natural, la piscina se convierte en un punto focal que captura la atención y encanta a quienes la visitan. La iluminación nocturna agrega un toque mágico al ambiente, transformando la piscina en un espacio de ensueño donde los reflejos del agua bajo las luces crean una atmósfera de tranquilidad y elegancia.
+
+Pero la experiencia no se detiene aquí. Una increíble cascada adorna la piscina, no solo visualmente impresionante, sino también dotada de un sonido suave y relajante que llena el espacio de serenidad. El murmullo constante de la cascada se convierte en el fondo perfecto para la relajación, permitiendo a nuestros huéspedes sumergirse en un estado de calma y bienestar mientras disfrutan de la frescura del agua.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="carouselpiscina" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselpiscina" data-bs-slide-to="0" class="active"
+                                    aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselpiscina" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselpiscina" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="../img/Piscina noche.jpeg" class="d-block w-100 rounded" alt="">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Piscina</h5>
+                                        <p>Nuestra decoración todo de madera te adentra en la naturaleza</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/Piscina atardecer.jpeg" class="d-block w-100 rounded" alt="">
+                                    <div class="carousel-caption d-none d-md-block rounded">
+                                        <h5>Second slide label</h5>
+                                        <p>Some representative placeholder content for the second slide.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/Piscina nochesita.jpeg" class="d-block w-100 rounded" alt="">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Third slide label</h5>
+                                        <p>Some representative placeholder content for the third slide.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselpiscina"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselpiscina"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="vistaVolcan">
+            <div class="container mt-5 mb-5">
+                <div class="row align-items-stretch d-flex flex-row justifty-contents-center">
+                    <div class="col-md-6">
+                        <div id="carouselVolcan" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselVolcan" data-bs-slide-to="0" class="active"
+                                    aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselVolcan" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselVolcan" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="../img/Volcan 1.jpeg" class="d-block w-100 rounded" alt="">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Volcan</h5>
+                                        <p>Nuestra decoración todo de madera te adentra en la naturaleza</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/Volcansito.jpg" class="d-block w-100 rounded" alt="">
+                                    <div class="carousel-caption d-none d-md-block rounded">
+                                        <h5>Atardeceres</h5>
+                                        <p>Some representative placeholder content for the second slide.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/Volcan 2.jpg" class="d-block w-100 rounded" alt="">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Third slide label</h5>
+                                        <p>Some representative placeholder content for the third slide.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselVolcan" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselVolcan" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="text-white roboto shadow-white">Vista al volcan</h5>
+                        <p class="text-white roboto">En Cabañas SyC, nos enorgullece ofrecer cabañas de madera completamente equipadas que combinan el encanto rústico con la comodidad moderna. Ven a experimentar la auténtica vida en la cabaña y descubre por ti mismo la tranquilidad que ofrecen nuestras cabañas. Ut dictum vitae justo vitae posuere. In commodo, eros sit amet bibendum accumsan, leo erat pellentesque lacus, vulputate rutrum erat tortor nec est. Aliquam sed mauris enim. Nam mauris ligula, condimentum eget odio nec, convallis vestibulum sapien. Cras eu ante sed arcu condimentum interdum non id nisi. Sed velit turpis, sodales eget magna non, blandit volutpat eros. 
+                            Praesent mattis, ex et aliquet placerat, libero leo condimentum quam, eget consequat sapien libero vel nunc. Phasellus tristique vulputate dui sit amet auctor. Etiam interdum egestas dignissim. Integer mollis augue id tincidunt mollis. Morbi pulvinar finibus sagittis. Vivamus et porttitor erat.
+                            Nulla interdum euismod molestie. Phasellus semper justo nec velit consectetur sodales. Integer mollis feugiat laoreet. Maecenas ultrices mi in dolor imperdiet, eget posuere lorem aliquam. Etiam vel laoreet elit. Quisque eget pulvinar enim, sit amet consequat arcu. Ut id lorem nec nulla pellentesque elementum non sed ipsum. Ut vehicula metus felis, at euismod erat viverra vel.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="footer">
+            <div class="container-fluid mt-5">
+                <!-- Footer -->
+                <footer
+                    class="text-center text-lg-start text-white"
+                    style="background-color: #8C512F"
+                    >
+                    <!-- Grid container -->
+                    <div class="container p-4 pb-0">
+                        <!-- Section: Links -->
+                        <section class="">
+                            <!--Grid row-->
+                            <div class="row">
+                                <!-- Grid column -->
+                                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                                    <h6 class="text-uppercase mb-4 font-weight-bold">
+                                        Cabañas SyC
+                                    </h6>
+                                    <p>
+                                        Here you can use rows and columns to organize your footer
+                                        content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                                        elit.
+                                    </p>
+                                </div>
+                                <!-- Grid column -->
+
+                                <hr class="w-100 clearfix d-md-none" />
+
+                                <!-- Grid column -->
+                                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                                    <h6 class="text-uppercase mb-4 font-weight-bold">Atajos</h6>
+                                    <p>
+                                        <a class="text-white" th:href="@{/}">Inicio</a>
+                                    </p>
+                                    <p style="text-shadow: 0px 0px 5px white">
+                                        <a class="text-white">Reservar</a>
+                                    </p>
+                                    <p>
+                                        <a class="text-white">Perfil</a>
+                                    </p>
+                                    <p>
+                                        <a class="text-white">Opiniones</a>
+                                    </p>
+                                </div>
+                                <!-- Grid column -->
+
+                                <hr class="w-100 clearfix d-md-none" />
+
+                                <!-- Grid column -->
+                                <hr class="w-100 clearfix d-md-none" />
+
+                                <!-- Grid column -->
+                                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                                    <p><i class="bi bi-geo-alt-fill mr-3"></i> Fortuna, Alajuela, Costa Rica</p>
+                                    <p><i class="fas fa-envelope mr-3"></i> infocabanasfortu@gmail.com</p>
+                                    <p><i class="fas fa-phone mr-3"></i> + 506 8543-5358</p>
+                                    <p><i class="bi bi-whatsapp mr-3"></i> + 506 8543-5358</p>
+                                </div>
+                                <!-- Grid column -->
+
+                                <!-- Grid column -->
+                                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 ">
+                                    <h6 class="text-uppercase mb-4 font-weight-bold">Social Media</h6>
+                                    <a
+                                        class="btn btn-primary btn-floating m-1"
+                                        style="background-color: #ac2bac"
+                                        href="https://www.instagram.com/cabanas_syc/"
+                                        role="button"
+                                        ><i class="fab fa-instagram"></i
+                                        ></a>
+                                    
+                                    <!-- Facebook -->
+                                    <a
+                                        class="btn btn-primary btn-floating m-1"
+                                        style="background-color: #3b5998"
+                                        href="https://www.facebook.com/profile.php?id=100088236324095&mibextid=LQQJ4d"
+                                        role="button"
+                                        ><i class="fab fa-facebook-f"></i
+                                        ></a>
+
+                                    <!-- Twitter -->
+                                    <a
+                                        class="btn btn-primary btn-floating m-1"
+                                        style="background-color: #000000"
+                                        href="https://www.tiktok.com/@cabanasfortuna_syc"
+                                        role="button"
+                                        ><i class="fab fa-tiktok"></i
+                                        ></a>
+
+                                    <!-- Google -->
+                                    <a
+                                        class="btn btn-primary btn-floating m-1"
+                                        style="background-color: #ffffff;color:red"
+                                        href="https://www.airbnb.es/rooms/797077134013108172?source_impression_id=p3_1700769689_I%2B0QuZc%2FK%2BgNY6Eq"
+                                        role="button"
+                                        ><i class="fab fa-airbnb"></i
+                                        ></a>
+
+                                    <!-- Instagram -->
+                                    
+
+                                    <!-- Linkedin -->
+                                    <a
+                                        class="btn btn-primary btn-floating m-1"
+                                        style="background-color: #0082ca"
+                                        href="https://www.booking.com/hotel/cr/cabanas-fortuna-syc.es.html?label=Spanish_Costa_Rica_ES_CR_28546571065-0sUkFSPHVpttHONxXxneoAS634117835934%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atiaud-294889297093%3Adsa-209717971945%3Alp9070299%3Ali%3Adec%3Adm%3Aag28546571065%3Acmp340173745&sid=04ae142c3f4c9b22e9bda12192134a06&gclid=CjwKCAiAjfyqBhAsEiwA-UdzJG63mQjCOZdPufIWR5j9mMwmmCLXAEejhcWWDLdsa_uUHgBvzuIv5hoCguIQAvD_BwE&aid=318615&ucfs=1&arphpl=1&dest_id=-1107229&dest_type=city&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=popularity&srpvid=14f88cf63bb70085&srepoch=1700769777&from=searchresults#hotelTmpl"
+                                        role="button"
+                                        ><i class="fas fa-bold"></i
+                                        ></a>
+                                    <!-- Github -->
+                                    <a
+                                        class="btn btn-primary btn-floating m-1"
+                                        style="background-color: #333333"
+                                        href="https://github.com/FranklinU22/Proyecto_CabanasSyC"
+                                        role="button"
+                                        ><i class="fab fa-github"></i
+                                        ></a>
+                                </div>
+                            </div>
+                            <!--Grid row-->
+                        </section>
+                        <!-- Section: Links -->
+                    </div>
+                    <!-- Grid container -->
+
+                    <!-- Copyright -->
+                    <div
+                        class="text-center p-3"
+                        style="background-color: rgba(0, 0, 0, 0.2)"
+                        >
+                        © 2023 Copyright: 
+                        <a class="text-white" th:href="@{/}"
+                           >CabañasSyC.com</a
+                        >
+                    </div>
+                    <!-- Copyright -->
+                </footer>
+                <!-- Footer -->
+            </div>
+            <!-- End of .container -->
+        </section>
+    </body>
+</html>
