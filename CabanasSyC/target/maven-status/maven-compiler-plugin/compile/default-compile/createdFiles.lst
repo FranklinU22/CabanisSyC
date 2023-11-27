@@ -1,8 +1,0 @@
-com\cabanasSyC\controller\RegistroController.class
-com\cabanasSyC\ProjectConfig.class
-com\cabanasSyC\CabanasSyCApplication.class
-com\cabanasSyC\service\UsuarioDetailsService.class
-com\cabanasSyC\dao\UsuarioDao.class
-com\cabanasSyC\domain\Rol.class
-com\cabanasSyC\domain\Usuario.class
-com\cabanasSyC\service\Impl\UsuarioDetailsServiceImpl.class
